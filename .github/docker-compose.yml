@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     container_name: web
-    build: .
+    build: ../.
     expose:
       - "80"
     working_dir: /var/www/app
