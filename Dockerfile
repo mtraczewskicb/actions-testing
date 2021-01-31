@@ -3,16 +3,16 @@ LABEL maintainer="Michal Traczewski <m.traczewski@chargebacks911.com>"
 
 # Use USF Sources for faster DL
 #COPY .docker/sources.list /etc/apt/sources.list
-#
-## Update & Prepare for Install
-#RUN DEBIAN_FRONTEND=noninteractive apt-get update
-#
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
-#
-#RUN DEBIAN_FRONTEND=noninteractive apt-get -y install curl unzip gnupg2
-#
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
-#RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+
+# Update & Prepare for Install
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install curl unzip gnupg2
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 #### Install dependencies.
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
